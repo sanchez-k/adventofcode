@@ -51,11 +51,28 @@ int main() {
             // Checks if Santa has reached the basement and if he has, end the loop
             // and give the position
             if (santa == -1) {
-                std::cout << position << '\n';
+                std::cout << position << '\n' << '\n';
                 // Ans should be 1797
-                return 0;
+                break;
             }
         }
     }
+    
+    // You don't need to create a map or iterator, since it's a container
+    std::cout << "Different solution\n";
+    santa = 0;
+    position = 0;
+    for (char i : all) {
+        position++;
+        if (i == '(') {
+            santa++;
+        } else {
+            santa--;
+            if (santa == -1) {
+                std::cout << "Santa reached the basement at position " << position << ".\n"; 
+            }
+        }
+    }
+    std::cout << "\nSanta needs to go to floor " << santa << ".\n";
     return 0;
 }
