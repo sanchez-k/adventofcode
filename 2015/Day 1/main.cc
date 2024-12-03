@@ -6,6 +6,7 @@ Input:
 
 #include <iostream>
 #include <map>
+#include <iterator>
 
 int main() {
     // Make a container to store all of the ()
@@ -30,5 +31,31 @@ int main() {
 
     // Print where Santa should go
     std::cout << floor << '\n';
+    // Ans should be 280
+
+    int santa = 0;
+    int position = 0;
+
+    // Use a for loop to iterator through all
+    for (std::string::iterator it = all.begin(); it != all.end(); it++) {
+        // For each loop increment the pos
+        position++;
+
+        // Checks what floor Santa is on and increments if it's ( and decrements if it's )
+        // Have to dereference it to get the value
+        if (*it == '(') {
+            santa++;
+        } else {
+            santa--;
+
+            // Checks if Santa has reached the basement and if he has, end the loop
+            // and give the position
+            if (santa == -1) {
+                std::cout << position << '\n';
+                // Ans should be 1797
+                return 0;
+            }
+        }
+    }
     return 0;
 }
